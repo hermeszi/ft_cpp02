@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myuen <myuen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 16:53:29 by myuen             #+#    #+#             */
-/*   Updated: 2025/07/17 17:33:55 by myuen            ###   ########.fr       */
+/*   Updated: 2025/07/17 17:31:24 by myuen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
-
 #include <iostream>
+#include "../inc/Fixed.hpp"
 
-class Fixed
+int	main( void )
 {
-private:
-	int					_rawBits;
-	static const int	_fractionalBits = 8;
+	Fixed	a;
+	Fixed	const b( 10 );
+	Fixed	const c( 42.42f );
+	Fixed	const d( b );
+	a = Fixed( 1234.4321f );
 
-public:
-	Fixed();
-	~Fixed();
-	Fixed	(const Fixed& copy);
-	Fixed&	operator= (const Fixed& src);
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
 
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
-};
-
-#endif
+	return (0);
+}

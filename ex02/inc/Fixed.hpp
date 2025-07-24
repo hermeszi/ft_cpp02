@@ -25,11 +25,39 @@ public:
 	Fixed();
 	~Fixed();
 	Fixed	(const Fixed& copy);
-	Fixed&	operator= (const Fixed& src);
+	Fixed	(int const intValue);
+	Fixed	(float const floatValue);
+
+	static	Fixed& min (Fixed& one, Fixed& two);
+	static	const Fixed& min (const Fixed& one, const Fixed& two);
+	static	Fixed& max (Fixed& one, Fixed& two);
+	static	const Fixed& max (const Fixed& one, const Fixed& two);
+
+	Fixed&	operator= (const Fixed& other);
+
+	bool operator > (const Fixed& other) const;
+	bool operator < (const Fixed& other) const;
+	bool operator >= (const Fixed& other) const;
+	bool operator <= (const Fixed& other) const;
+	bool operator == (const Fixed& other) const;
+	bool operator != (const Fixed& other) const;
+
+	Fixed operator + (const Fixed& other) const;
+	Fixed operator - (const Fixed& other) const;
+	Fixed operator * (const Fixed& other) const;
+	Fixed operator / (const Fixed& other) const;
+
+	Fixed& operator++();
+	Fixed& operator--();
+	Fixed operator++(int);
+	Fixed operator--(int);
 
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
-
+	float	toFloat(void) const;
+	int		toInt(void) const;
 };
+
+std::ostream& operator << (std::ostream&, const Fixed& value);
 
 #endif
